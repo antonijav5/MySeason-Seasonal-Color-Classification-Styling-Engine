@@ -23,7 +23,7 @@ SEASON_INFO = {
     "Light Spring": {
         "icon": "icons/light_spring.png",
         "bg": "icons/light_spring.png",
-        "desc": "Topla • Svjetla • Delikatna",
+        "desc": "Topla • Svetla • Delikatna",
         "color": (1.00, 0.85, 0.88),
         "gradient": [(1.0, 0.82, 0.86), (1.0, 0.95, 0.70), (0.85, 1.0, 0.90)]
     },
@@ -31,7 +31,7 @@ SEASON_INFO = {
     "True Spring": {
         "icon": "icons/true_spring.png",
         "bg": "icons/true_spring.png",
-        "desc": "Topla • Svježa • Živahna",
+        "desc": "Topla • Sveža • Živahna",
         "color": (1.00, 0.78, 0.40),
         "gradient": [(1.0, 0.60, 0.30), (1.0, 0.85, 0.20), (0.60, 0.90, 0.40)]
     },
@@ -47,7 +47,7 @@ SEASON_INFO = {
     "Light Summer": {
         "icon": "icons/light_summer.png",
         "bg": "icons/light_summer.png",
-        "desc": "Hladna • Svjetla • Nježna",
+        "desc": "Hladna • Svetla • Nježna",
         "color": (0.78, 0.88, 1.00),
         "gradient": [
             (0.82, 0.90, 1.00),  # svijetlo baby plava
@@ -237,39 +237,53 @@ def classify_12_seasons(r, g, b):
             scores[k] += 2
 
     if sat > 0.65:
-        scores["Bright Spring"] += 2;
+        scores["Bright Spring"] += 2
+
         scores["Bright Winter"] += 2
-        scores["True Spring"] += 1;
-        scores["True Winter"] += 1;
+        scores["True Spring"] += 1
+
+        scores["True Winter"] += 1
+
         scores["True Autumn"] += 1
     if sat > 0.50:
-        scores["True Spring"] += 1;
-        scores["True Autumn"] += 1;
+        scores["True Spring"] += 1
+
+        scores["True Autumn"] += 1
+
         scores["True Winter"] += 1
     if sat < 0.45:
-        scores["Soft Summer"] += 2;
+        scores["Soft Summer"] += 2
+
         scores["Soft Autumn"] += 2
-        scores["Light Summer"] += 1;
+        scores["Light Summer"] += 1
+
         scores["Light Spring"] += 1
     if sat < 0.30:
-        scores["Soft Summer"] += 2;
+        scores["Soft Summer"] += 2
+
         scores["Soft Autumn"] += 2
 
     if val > 0.75:
-        scores["Light Spring"] += 2;
+        scores["Light Spring"] += 2
+
         scores["Light Summer"] += 2
-        scores["Bright Spring"] += 1;
+        scores["Bright Spring"] += 1
+
         scores["Bright Winter"] += 1
     if val > 0.85:
-        scores["Light Spring"] += 2;
+        scores["Light Spring"] += 2
+
         scores["Light Summer"] += 2
     if val < 0.35:
-        scores["Dark Autumn"] += 2;
+        scores["Dark Autumn"] += 2
+
         scores["Dark Winter"] += 2
-        scores["True Autumn"] += 1;
+        scores["True Autumn"] += 1
+
         scores["True Winter"] += 1
     if val < 0.25:
-        scores["Dark Autumn"] += 2;
+        scores["Dark Autumn"] += 2
+
         scores["Dark Winter"] += 2
     if 0.40 <= val <= 0.70:
         for k in ["True Spring", "True Summer", "True Autumn", "True Winter"]: scores[k] += 1
